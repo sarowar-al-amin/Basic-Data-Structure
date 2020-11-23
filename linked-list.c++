@@ -97,23 +97,23 @@ int main(){
 
         switch (choice)
         {
-        case '1' :
-            /* code */
-            cout<<"Enter a number: \n";
-            cin >> data;
-            insert(head,last,data);
-            break;
-        case '2' :
-            /* code */
-            remove(head,last);
-            break;
-        case '3' :
-            /* code */
-            showList(head);
-            break;
-        default:
-            cout << "System doesn't recognize the command"<<endl;
-            break;
+            case '1' :
+                /* code */
+                cout<<"Enter a number: \n";
+                cin >> data;
+                insert(head,last,data);
+                break;
+            case '2' :
+                /* code */
+                remove(head,last);
+                break;
+            case '3' :
+                /* code */
+                showList(head);
+                break;
+            default:
+                cout << "System doesn't recognize the command"<<endl;
+                break;
         }
 
     }while(choice != '4');
