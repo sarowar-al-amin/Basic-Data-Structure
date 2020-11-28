@@ -7,12 +7,19 @@
 using namespace std;
 // Global variable
 int node, edge;
-int color[100];
+int Time = 1; // 'time' is a default keyword.
+
+// Global array
+int startTime[80];
+int stopTime[80]; 
+int color[80];
 int adj[80][80];
 
 // Declaring and Defining functions
 void dfsVisited(int x){
     color[x] = grey;
+    startTime[x] = Time;
+    Time++;
     for(int i = 0; i < node; i++){
         if(adj[x][i] == 1){
             if(color[i] == white){
@@ -22,6 +29,8 @@ void dfsVisited(int x){
     }
 
     color[x] = black;
+    stopTime[x] = Time;
+    Time++;
 }
 
 void dfs(){
@@ -63,17 +72,23 @@ int main(){
 
     dfs();
     
-    int count = 0;
+    // int count = 0;
+    // for(int i = 0; i < node; i++){
+    //     if(color[i] == black){
+    //         count++;
+    //     }
+    // }
+    // if(count == node){
+    //     cout <<"Traverse all nodes."<<endl;
+    // }else{
+    //     cout<<"Some node remain untraverse."<< endl;
+    // }
+
+    cout <<"Time of starting and finishing of all the node: "<<endl;
     for(int i = 0; i < node; i++){
-        if(color[i] == black){
-            count++;
-        }
+        cout <<char('A'+i)<<" : " <<startTime[i] <<"  "<<stopTime[i]<<endl;
     }
-    if(count == node){
-        cout <<"Traverse all nodes."<<endl;
-    }else{
-        cout<<"Some node remain untraverse."<< endl;
-    }
+    cout << endl;
 
     return 0;
 }
