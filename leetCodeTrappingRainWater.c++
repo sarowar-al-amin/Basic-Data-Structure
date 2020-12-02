@@ -17,55 +17,30 @@ int unitVolume;
 
 // Declaring and Defining functions
 
-bool findUnitVolume(){
-    int len = rainContainer.size();
 
-    if(len > 1){
-        int initialPoint = 0;
-        int endPoint = 0;
+void findUnitVolume(){
 
-        int count = 0;
-        while (count < len)
+    for(int i = 0; i < rainContainer.size(); i++){
+        int leftP = i, rightP = i, maxLeft = 0, maxRight = 0;
+        while(leftP >= 0){
+            maxLeft = max(maxLeft, rainContainer[leftP]);
+            leftP--;
+        }
+        while (rightP < rainContainer.size())
         {
-            if((initialPoint == 0) && (rainContainer[count] > 0)){
-                initialPoint = count;
-                initial.push_back(initialPoint);
-                // cout << initialPoint <<" ";
-
-            }else if((rainContainer[count] >= rainContainer[initialPoint]) && initialPoint != 0){
-                endPoint = count;
-                ending.push_back(endPoint);
-                initialPoint = endPoint;
-                initial.push_back(initialPoint);
-            }else if(count == len-1){
-                ending.push_back(count);
-            }
-
-            count++;
+            maxRight = max(maxRight, rainContainer[rightP]);
+            rightP++;
         }
 
-        // cout << "\n Ending  point array: " << ending.size()<< endl;
+        int currentWaterVolume = min(maxLeft, maxRight) - rainContainer[i];
 
-        // cout <<"\nInitial: " <<initial.size()<<endl;
-        // Block count
-        for(int i = 0; i < initial.size(); i++){
-            int unitDifference = ending[i] - initial[i]-1;
-            int height = min(rainContainer[initial[i]], rainContainer[ending[i]]);
-
-            int totalVolume = unitDifference * height;
-            // cout << "totalVolume: "<< totalVolume<< endl;
-            for(int j = initial[i]+1; j < ending[i]; j++){
-                totalVolume -= rainContainer[j];
-            }
-            // cout << "totalVolume: "<< totalVolume<< endl;
-            unitVolume += totalVolume;
+        if(currentWaterVolume > 0){
+            unitVolume += currentWaterVolume;
         }
 
-
-        return true;
+        
     }
 
-    return false;
 }
 
 int main(){
@@ -83,8 +58,9 @@ int main(){
         cin >> x;
         rainContainer.push_back(x);
     }
-
-    if(findUnitVolume()){
+     
+    findUnitVolume();
+    if(unitVolume > 0){
         cout<<"Trapped rain water volume is:-> "<< unitVolume<< endl;
     }
 
