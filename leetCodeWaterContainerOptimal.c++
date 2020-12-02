@@ -23,9 +23,11 @@ bool findingMaximumArea(){
             int width = endPointer - initialPointer;
             int area = hight * width;
             maximumArea = max(maximumArea, area);
-            if(waterContainer[initialPointer] == hight){
-                initialPointer++;
-            }else{
+            // ***********we can replace this logic************************
+            // by (waterContainer[initialPointer] <= waterContainer[endPointer])    
+            if(waterContainer[initialPointer] == hight){ 
+                initialPointer++;                        
+            }else{                                      
                 endPointer++;
             }
 
