@@ -21,7 +21,7 @@ bool equalityChecking(){
     }
 
     for(int i = 0; i < len2; i++){
-        if(input1[i] == '#' && checker2.size() > 0){
+        if(input2[i] == '#' && checker2.size() > 0){
             checker2.pop_back();
         }else if(input2[i] != '#'){
             checker2.push_back(input2[i]);
