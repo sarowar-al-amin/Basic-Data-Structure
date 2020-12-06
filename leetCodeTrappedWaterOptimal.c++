@@ -12,26 +12,26 @@ void findingWaterVolume(){
     int leftMax = 0;
     int rightMax = 0;
     int initialPoint = 0, endPoint = len - 1;
-    int present  = 0;
 
-    int i = 0;
-    while (i < len)
+    
+    while (initialPoint < endPoint)
     {
         /* code */
-        int height = min(leftMax, rightMax);67jm,
-        if(leftMax < rightMax){
-            present = initialPoint;
-            if(leftMax < waterContainer[present]){
-                leftMax = waterContainer[present];
+        if(waterContainer[initialPoint] <= waterContainer[endPoint]){
+            if(waterContainer[initialPoint] >= leftMax){
+            leftMax = waterContainer[initialPoint]; 
+            }else{
+                totalWaterVolume += (leftMax - waterContainer[initialPoint]);
+            } 
+            initialPoint++;
+        }else{
+            if(waterContainer[endPoint] >= rightMax){
+                rightMax = waterContainer[endPoint];
+            }else{
+                totalWaterVolume += (rightMax - waterContainer[endPoint]);
             }
-
-        int currentWaterVolume = height - waterContainer[present];
-        
-        if( currentWaterVolume > 0){
-            // cout <<"\nVolume: "<< currentWaterVolume << endl;
-            totalWaterVolume += currentWaterVolume;
+            endPoint--;
         }
-        i++;
     }
 
 }
