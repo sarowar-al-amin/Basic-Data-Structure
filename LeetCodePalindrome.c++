@@ -19,6 +19,8 @@ vector<char> processedString(vector<char> input){
             processedInput.push_back(char(input[i] - 'A' + 'a'));
         }else if((input[i] >= 'a') && (input[i] <='z')){
             processedInput.push_back(input[i]);
+        }else if((input[i] >= '0') && (input[i] <='9')){ // Adding this line of code give the ability to 
+            processedInput.push_back(input[i]);          // perform the same operation on number too.
         }
     }
 
