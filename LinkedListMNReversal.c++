@@ -161,9 +161,14 @@ int main(){
     int m , n;
     m = n = 0;
     cout<<"\nEnter the value of mth and nth: "<<endl;
-    while (!(m > 0 && m < length) && !(n > m && n < length))
+    while (true)
     {
         /* code */
+        if((m > 0) && (n > m) && (n <= length)){
+            break;
+        }else{
+           m = n = 0; 
+        }
         cin >> m >> n;
     }
     
